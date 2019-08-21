@@ -57,5 +57,10 @@ post '/newpost' do
 	)', [@authorName, @articleText]
 
 	redirect to '/'
-	#erb "Введено<br /> #{@authorName}<br /> #{@articleText}"
+end
+
+get '/details/:article_id' do
+	@article_id = params[:article_id]
+
+	erb :details
 end
