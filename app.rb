@@ -33,8 +33,16 @@ get '/newpost' do
 end
 
 post '/newpost' do
-	authorName = params[:authorName]
-	articleText = params[:articleText]
+	@authorName = params[:authorName]
+	@articleText = params[:articleText]
+
+	if @authorName.length <= 0
+		@error = "What about author name?"
+		return erb :newpost
+	elsif @articleText.length <= 0
+		@error = "Try type article text"
+		return erb :newpost
+	end
 
 	@db.execute 'INSERT INTO 
 	Articles (
@@ -45,7 +53,7 @@ post '/newpost' do
 		datetime(), 
 		?, 
 		?
-	)', [authorName, articleText]
+	)', [@authorName, @articleText]
 
-	erb "Введено<br /> #{authorName}<br /> #{articleText}"
+	erb "Введено<br /> #{@authorName}<br /> #{@articleText}"
 end
