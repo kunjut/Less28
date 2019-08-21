@@ -3,9 +3,9 @@
 <p>All that is written on the site, immediately gets to this page</p><hr/>
 
 <% @articles.each do |i| %><br />
-    <%= i['articleText']%><br /><br />
-    added to: <%= i['createdDate']%> •
-    author is: <%= i['authorName']%> •
-    <a href="#">Details</a>
+    <%= i['articleText'] %><br /><br />
+    added to: <%= i['createdDate'] %> •
+    author is: <%= i['authorName'] %> •
+    <a href="/details/<%= i['id'] %>">Details</a>
     <hr />
 <% end %>
