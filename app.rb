@@ -25,7 +25,8 @@ configure do
 end
 
 get '/' do
-	erb "Wow hellooo"			
+	@articles = @db.execute 'SELECT * FROM Articles ORDER BY id DESC'
+	erb :index			
 end
 
 get '/newpost' do
