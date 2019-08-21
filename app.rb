@@ -15,5 +15,5 @@ post '/newpost' do
 	authorName = params[:authorName]
 	articleText = params[:articleText]
 
-	erb "Введено #{authorName}, #{articleText}"
+	erb "Введено<br /> #{authorName}<br /> #{articleText}"
 end
