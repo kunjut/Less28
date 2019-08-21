@@ -9,6 +9,10 @@ def init_db
 	@db.results_as_hash = true
 end
 
+before do
+	init_db
+end
+
 configure do
 	init_db
 	@db.execute 'CREATE TABLE IF NOT EXISTS 
@@ -31,6 +35,17 @@ end
 post '/newpost' do
 	authorName = params[:authorName]
 	articleText = params[:articleText]
+
+	@db.execute 'INSERT INTO 
+	Articles (
+		createdDate, 
+		authorName, 
+		articleText
+	) VALUES (
+		datetime(), 
+		?, 
+		?
+	)', [authorName, articleText]
 
 	erb "Введено<br /> #{authorName}<br /> #{articleText}"
 end
