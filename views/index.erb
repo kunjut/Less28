@@ -1,0 +1,11 @@
+<br />
+<h2>Latest articles</h2>
+<p>All that is written on the site, immediately gets to this page</p><hr/>
+
+<% @articles.each do |i| %><br />
+    <%= i['articleText']%><br /><br />
+    added to: <%= i['createdDate']%> •
+    author is: <%= i['authorName']%> •
+    <a href="#">Details</a>
+    <hr />
+<% end %>
