@@ -55,5 +55,6 @@ post '/newpost' do
 		?
 	)', [@authorName, @articleText]
 
-	erb "Введено<br /> #{@authorName}<br /> #{@articleText}"
+	redirect to '/'
+	#erb "Введено<br /> #{@authorName}<br /> #{@articleText}"
 end
