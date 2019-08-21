@@ -10,3 +10,10 @@ end
 get '/newpost' do
 	erb :newpost
 end
+
+post '/newpost' do
+	authorName = params[:authorName]
+	articleText = params[:articleText]
+
+	erb "Введено #{authorName}, #{articleText}"
+end
