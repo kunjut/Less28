@@ -2,9 +2,26 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sqlite3'
+
+def init_db
+	@db = SQLite3::Database.new 'general.db'
+	@db.results_as_hash = true
+end
+
+configure do
+	init_db
+	@db.execute 'CREATE TABLE IF NOT EXISTS 
+	Articles (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		createdDate DATA,
+		authorName TEXT,
+		articleText TEXT
+	)'
+end
 
 get '/' do
-	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
+	erb "Wow hellooo"			
 end
 
 get '/newpost' do
