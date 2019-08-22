@@ -22,6 +22,13 @@ configure do
 		authorName TEXT,
 		articleText TEXT
 	)'
+	@db.execute 'CREATE TABLE IF NOT EXISTS 
+	Comments (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		createdDate DATA,
+		commentText TEXT,
+		article_id
+	)'
 end
 
 get '/' do
@@ -64,6 +71,24 @@ get '/details/:article_id' do
 
 	db = @db.execute 'SELECT * FROM Articles WHERE id=?', [article_id]
 	@row = db[0]
-	 
+
 	erb :details
+end
+
+post '/details/:article_id' do
+	article_id = params[:article_id]
+	@commentText = params[:commentText]
+
+	@db.execute 'INSERT INTO 
+	Comments (
+		createdDate, 
+		commentText,
+		article_id
+	) VALUES (
+		datetime(), 
+		?,
+		?
+	)', [@commentText, article_id]
+
+	redirect to ('/details/' + article_id)	
 end
