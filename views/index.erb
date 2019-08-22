@@ -5,7 +5,7 @@
 <% @articles.each do |i| %><br />
     <%= i['articleText'] %><br /><br />
     <span style="font-size: 85%; color: #999; font-style: italic;">added to: <%= i['createdDate'] %> •</span>
-    <span style="font-size: 85%; color: #999; font-style: italic;">author is: <%= i['authorName'] %> •</span>
-    <a href="/details/<%= i['id'] %>" style="font-size: 85%; font-style: italic;">Details</a>
+    <span style="font-size: 85%; color: #999; font-style: italic;">author is: <%= i['authorName'] %></span>
+    <br /><a href="/details/<%= i['id'] %>" style="font-size: 85%; font-style: italic;">Details →</a>
     <hr />
 <% end %>
