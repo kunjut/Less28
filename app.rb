@@ -60,7 +60,10 @@ post '/newpost' do
 end
 
 get '/details/:article_id' do
-	@article_id = params[:article_id]
+	article_id = params[:article_id]
 
+	db = @db.execute 'SELECT * FROM Articles WHERE id=?', [article_id]
+	@row = db[0]
+	 
 	erb :details
 end
