@@ -72,6 +72,8 @@ get '/details/:article_id' do
 	db = @db.execute 'SELECT * FROM Articles WHERE id=?', [article_id]
 	@row = db[0]
 
+	@comment = @db.execute 'SELECT * FROM Comments WHERE article_id=?', [article_id]
+	
 	erb :details
 end
 
