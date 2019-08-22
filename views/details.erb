@@ -4,9 +4,21 @@
 
 <%= @row['articleText'] %><br /><br />
 <span style="font-size: 85%; color: #999; font-style: italic;">added to: <%= @row['createdDate'] %> •</span>
-<span style="font-size: 85%; color: #999; font-style: italic;">author is: <%= @row['authorName'] %> •</span>
-<a href="/details/<%= @row['id'] %>" style="font-size: 85%; font-style: italic;">Details</a>
+<span style="font-size: 85%; color: #999; font-style: italic;">author is: <%= @row['authorName'] %></span><br />
+<a href="/" style="font-size: 85%; font-style: italic;">← Back</a>
 <hr />
+
+<!-- Если нет комментариев, то не выводить для них заголовок -->
+<% if @comment != [] %>
+ <br /><h2><%='Comments' %></h2><br />
+<% end %>
+<!-- Вывод комментариев -->
+<% @comment.each do |i| %>
+    <%= i['commentText'] %><br />
+    <br /><span style="font-size: 85%; color: #999; font-style: italic;">
+        added to: <%= i['createdDate'] %>
+    </span><hr />
+<% end %>
 
 <br />
 <h2>Discuss this article</h2>
