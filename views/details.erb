@@ -1,9 +1,18 @@
 <br />
 <h2>Article details</h2>
-<p>Here you can read and discuss the article</p><hr/>
+<p>Here you can read and discuss</p><hr/>
 
 <%= @row['articleText'] %><br /><br />
 <span style="font-size: 85%; color: #999; font-style: italic;">added to: <%= @row['createdDate'] %> •</span>
 <span style="font-size: 85%; color: #999; font-style: italic;">author is: <%= @row['authorName'] %> •</span>
 <a href="/details/<%= @row['id'] %>" style="font-size: 85%; font-style: italic;">Details</a>
 <hr />
+
+<br />
+<h2>Discuss this article</h2>
+<form action="/details/<%= @row['id'] %>" method="POST">
+  <div class="form-group">
+    <textarea name="commentText" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Enter your comment"><%= @commentText %></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Add comment</button>
+</form>
